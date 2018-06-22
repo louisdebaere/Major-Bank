@@ -21,7 +21,7 @@ class AccountViewController: UIViewController {
         navigationItem.hidesBackButton = true
         if let account = try? JSONDecoder().decode(Account.self, from: accountData) {
             navigationItem.title = "Welcome, \(account.id)!"
-            accessLevelLabel.text = "You have \(account.accessLevel) privileges."
+            accessLevelLabel.text = "You have \(AccessLevel.default) privileges."
         } else {
             navigationItem.title = "Error"
             accessLevelLabel.text = "Failed to decode JSON"

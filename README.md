@@ -1,8 +1,8 @@
-H1 Security Challenge
+# Security Challenge
 
 Demo application for input validation weakness through json injection
 
-H2 Vulnerability
+## Vulnerability
 
 Input from an untrusted source via the user id and pin fields.
 

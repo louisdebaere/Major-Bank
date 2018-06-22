@@ -79,6 +79,9 @@ extension UITextField {
         guard let inputText = text, !inputText.trimmingCharacters(in: .whitespaces).isEmpty else {
             return nil
         }
+        guard inputText.count < 10 else {
+            return nil
+        }
         return inputText
     }
 }

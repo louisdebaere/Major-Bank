@@ -8,20 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		765F137920DD23E400767C35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765F137820DD23E400767C35 /* AppDelegate.swift */; };
-		765F137B20DD23E400767C35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765F137A20DD23E400767C35 /* ViewController.swift */; };
+		765F137B20DD23E400767C35 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765F137A20DD23E400767C35 /* SignUpViewController.swift */; };
 		765F137E20DD23E400767C35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 765F137C20DD23E400767C35 /* Main.storyboard */; };
 		765F138020DD23E600767C35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 765F137F20DD23E600767C35 /* Assets.xcassets */; };
 		765F138320DD23E600767C35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 765F138120DD23E600767C35 /* LaunchScreen.storyboard */; };
+		765F138B20DD28AB00767C35 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765F138A20DD28AB00767C35 /* AccountViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		765F137520DD23E400767C35 /* Major Bank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Major Bank.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		765F137820DD23E400767C35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		765F137A20DD23E400767C35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		765F137A20DD23E400767C35 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		765F137D20DD23E400767C35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		765F137F20DD23E600767C35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		765F138220DD23E600767C35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		765F138420DD23E600767C35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		765F138A20DD28AB00767C35 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +57,8 @@
 			isa = PBXGroup;
 			children = (
 				765F137820DD23E400767C35 /* AppDelegate.swift */,
-				765F137A20DD23E400767C35 /* ViewController.swift */,
+				765F137A20DD23E400767C35 /* SignUpViewController.swift */,
+				765F138A20DD28AB00767C35 /* AccountViewController.swift */,
 				765F137C20DD23E400767C35 /* Main.storyboard */,
 				765F137F20DD23E600767C35 /* Assets.xcassets */,
 				765F138120DD23E600767C35 /* LaunchScreen.storyboard */,
@@ -135,8 +138,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				765F137B20DD23E400767C35 /* ViewController.swift in Sources */,
+				765F137B20DD23E400767C35 /* SignUpViewController.swift in Sources */,
 				765F137920DD23E400767C35 /* AppDelegate.swift in Sources */,
+				765F138B20DD28AB00767C35 /* AccountViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

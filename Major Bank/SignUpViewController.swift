@@ -34,7 +34,8 @@ class SignUpViewController: UIViewController {
             guard let destinationAccountVC = segue.destination as? AccountViewController else {
                 return
             }
-            destinationAccountVC.accountData = Data(json!.utf8)
+            let account = Account(userID: userIDTextField.text!, pinCode: pinCodeTextField.text!)
+            destinationAccountVC.accountData = try? JSONEncoder().encode(account)
         default:
             break
         }

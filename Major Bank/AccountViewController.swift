@@ -19,7 +19,8 @@ class AccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
-        if let account = try? JSONDecoder().decode(Account.self, from: accountData) {
+        if let accountData = accountData {
+            let account = try! JSONDecoder().decode(Account.self, from: accountData)
             navigationItem.title = "Welcome, \(account.id)!"
             accessLevelLabel.text = "You have \(account.accessLevel) privileges."
         } else {
@@ -33,6 +34,12 @@ struct Account: Codable {
     let id: String
     let pin: String
     let accessLevel: AccessLevel
+}
+
+extension Account {
+    init(userID id: String, pinCode pin: String) {
+        self.init(id: id, pin: pin, accessLevel: .default)
+    }
 }
 
 enum AccessLevel: String, Codable {
@@ -49,3 +56,4 @@ extension AccessLevel: CustomStringConvertible {
         }
     }
 }
+

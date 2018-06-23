@@ -15,7 +15,9 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var continueButton: UIButton!
     
     @IBAction func tapContinueButton(_ sender: UIButton) {
-        performSegue(withIdentifier: "sign up", sender: self)
+        if !userIDTextField.text!.contains("\"") {
+            performSegue(withIdentifier: "sign up", sender: self)
+        }
     }
     @IBAction func signOutUnwind(_ sender: UIStoryboardSegue) {
         userIDTextField.text = nil

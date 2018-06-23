@@ -6,26 +6,19 @@ When signing up, there is an input validation weakness
 
 ## Vulnerability
 
-Input from an untrusted source is possible via the user id and pin code fields.
+Input from an untrusted source is possible via the user id AND pin code fields.
 
-A potential attacker can insert arbitrary attributes into a JSON entity because the input is not properly validated.
+Malicious JSON injection is still possible from the other text field.
 
-![Example](https://i.imgur.com/JYclYJm.png)
+Escaping the " character is a good start!
 
-Because the JSON serialization is performed using string interpolation, the untrusted string data in the user id and pin code text fields will not be validated to escape JSON-related special characters. 
+Although there is a better way: whitelisting what is allowed gives for a surefire way to validate input data.
 
 ```    
-var json: String? {
-
-        ...
-        
-        return """
-        {
-        "id": "\(userID)",
-        "pin": "\(pinCode)",
-        "accessLevel": "default"
-        }
-        """
+@IBAction func tapContinueButton(_ sender: UIButton) {
+    if !userIDTextField.text!.contains("\"") {
+        performSegue(withIdentifier: "sign up", sender: self)
+    }
 }
 ```
-This would grant him administrator access instead of the default user access assigned through signup.
+This late check is also confusing, since there is no feedback to the user signaling what he did wrong.

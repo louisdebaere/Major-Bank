@@ -4,28 +4,14 @@ Demo banking application
 
 When signing up, there is an input validation weakness
 
-## Vulnerability
+## Incorrect Fix
 
-Input from an untrusted source is possible via the user id and pin code fields.
-
-A potential attacker can insert arbitrary attributes into a JSON entity because the input is not properly validated.
-
-![Example](https://i.imgur.com/JYclYJm.png)
-
-Because the JSON serialization is performed using string interpolation, the untrusted string data in the user id and pin code text fields will not be validated to escape JSON-related special characters. 
+Hardcoding the convienient outcome doesn't change a thing.
 
 ```    
-var json: String? {
-
-        ...
-        
-        return """
-        {
-        "id": "\(userID)",
-        "pin": "\(pinCode)",
-        "accessLevel": "default"
-        }
-        """
-}
+-            accessLevelLabel.text = "You have \(account.accessLevel) privileges."
++            accessLevelLabel.text = "You have \(AccessLevel.default) privileges."
 ```
-This would grant him administrator access instead of the default user access assigned through signup.
+
+Attack the root of the problem. You will learn more this way!
+Hint: Try a different way of serializing the JSON data string.

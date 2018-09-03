@@ -6,7 +6,7 @@ When signing up, there is an input validation weakness
 
 ## Incorrect Fix
 
-Hardcoding the convienient outcome doesn't change a thing.
+Hardcoding the convenient outcome doesn't change a thing.
 
 ```    
 -            accessLevelLabel.text = "You have \(account.accessLevel) privileges."

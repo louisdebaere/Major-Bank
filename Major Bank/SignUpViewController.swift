@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  Major Bank
-//
-//  Created by Louis Debaere on 6/22/18.
-//  Copyright © 2018 Louis Debaere. All rights reserved.
-//
-
 import UIKit
 
 class SignUpViewController: UIViewController {
@@ -31,7 +23,8 @@ class SignUpViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "sign up":
-            guard let destinationAccountVC = segue.destination as? AccountViewController else {
+            guard let destinationAccountVC =
+                segue.destination as? AccountViewController else {
                 return
             }
             destinationAccountVC.accountData = Data(json!.utf8)
@@ -61,7 +54,8 @@ extension SignUpViewController: UITextFieldDelegate {
     }
     
     var json: String? {
-        guard let userID = userIDTextField.input, let pinCode = pinCodeTextField.input else {
+        guard let userID =
+            userIDTextField.input, let pinCode = pinCodeTextField.input else {
             return nil
         }
         return """
@@ -76,7 +70,8 @@ extension SignUpViewController: UITextFieldDelegate {
 
 extension UITextField {
     var input: String? {
-        guard let inputText = text, !inputText.trimmingCharacters(in: .whitespaces).isEmpty else {
+        guard let inputText =
+            text, !inputText.trimmingCharacters(in: .whitespaces).isEmpty else {
             return nil
         }
         return inputText

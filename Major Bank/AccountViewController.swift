@@ -1,11 +1,3 @@
-//
-//  AccountViewController.swift
-//  Major Bank
-//
-//  Created by Louis Debaere on 6/22/18.
-//  Copyright © 2018 Louis Debaere. All rights reserved.
-//
-
 import UIKit
 
 class AccountViewController: UIViewController {
@@ -20,9 +12,11 @@ class AccountViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         if let accountData = accountData {
-            let account = try! JSONDecoder().decode(Account.self, from: accountData)
+            let account =
+                try! JSONDecoder().decode(Account.self, from: accountData)
             navigationItem.title = "Welcome, \(account.id)!"
-            accessLevelLabel.text = "You have \(account.accessLevel) privileges."
+            accessLevelLabel.text =
+            "You have \(account.accessLevel) privileges."
         } else {
             navigationItem.title = "Error"
             accessLevelLabel.text = "Failed to decode JSON"

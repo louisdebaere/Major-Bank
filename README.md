@@ -29,3 +29,6 @@ var json: String? {
 }
 ```
 This would grant him administrator access instead of the default user access assigned through signup.
+
+### Note
+It's not a good security practice to handle authorization using parameters coming from the client side, this is for the sake of example

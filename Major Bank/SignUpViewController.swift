@@ -1,18 +1,23 @@
 import UIKit
 
-class SignUpViewController: UIViewController {
+final class SignUpViewController: UIViewController {
     
-    @IBOutlet weak var userIDTextField: UITextField!
-    @IBOutlet weak var pinCodeTextField: UITextField!
-    @IBOutlet weak var continueButton: UIButton!
+    // MARK: Interface Builder
     
-    @IBAction func tapContinueButton(_ sender: UIButton) {
+    @IBOutlet private var userIDTextField: UITextField!
+    @IBOutlet private var pinCodeTextField: UITextField!
+    @IBOutlet private var continueButton: UIButton!
+    
+    @IBAction private func tapContinueButton(_ sender: UIButton) {
         performSegue(withIdentifier: "sign up", sender: self)
     }
-    @IBAction func signOutUnwind(_ sender: UIStoryboardSegue) {
+    
+    @IBAction private func signOutUnwind(_ sender: UIStoryboardSegue) {
         userIDTextField.text = nil
         pinCodeTextField.text = nil
     }
+    
+    // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,14 +28,27 @@ class SignUpViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "sign up":
-            guard let destinationAccountVC = segue.destination
-                as? AccountViewController else {
+            guard let destinationAccountVC = segue.destination as? AccountViewController else {
                 return
             }
-            destinationAccountVC.accountData = Data(json!.utf8)
+            destinationAccountVC.accountData = Data(json?.utf8 ?? "".utf8)
         default:
             break
         }
+    }
+    
+    private var json: String? {
+        guard let userID = userIDTextField.input,
+            let pinCode = pinCodeTextField.input else {
+            return nil
+        }
+        return """
+        {
+        "id": "\(userID)",
+        "pin": "\(pinCode)",
+        "accessLevel": "default"
+        }
+        """
     }
 }
 
@@ -52,26 +70,11 @@ extension SignUpViewController: UITextFieldDelegate {
         }
         return true
     }
-    
-    var json: String? {
-        guard let userID = userIDTextField.input,
-            let pinCode = pinCodeTextField.input else {
-            return nil
-        }
-        return """
-        {
-        "id": "\(userID)",
-        "pin": "\(pinCode)",
-        "accessLevel": "default"
-        }
-        """
-    }
 }
 
-extension UITextField {
+private extension UITextField {
     var input: String? {
-        guard let inputText = text,
-            !inputText.trimmingCharacters(in: .whitespaces).isEmpty else {
+        guard let inputText = text, !inputText.trimmingCharacters(in: .whitespaces).isEmpty else {
             return nil
         }
         return inputText

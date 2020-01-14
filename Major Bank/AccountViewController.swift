@@ -1,25 +1,21 @@
 import UIKit
 
-class AccountViewController: UIViewController {
+final class AccountViewController: UIViewController {
     
-    @IBOutlet weak var accessLevelLabel: UILabel!
+    @IBOutlet private var accessLevelLabel: UILabel!
     
     var accountData: Data!
-    
-    var account: Account?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
-        if let account =
-            try? JSONDecoder().decode(Account.self, from: accountData) {
-            navigationItem.title = "Welcome, \(account.id)!"
-            accessLevelLabel.text =
-            "You have \(account.accessLevel) privileges."
+        guard let account = try? JSONDecoder().decode(Account.self, from: accountData) else {
+            navigationItem.title = "Error"
+            accessLevelLabel.text = "Failed to decode JSON"
             return
         }
-        navigationItem.title = "Error"
-        accessLevelLabel.text = "Failed to decode JSON"
+        navigationItem.title = "Welcome, \(account.id)!"
+        accessLevelLabel.text = "You have \(account.accessLevel) privileges."
     }
 }
 
@@ -27,13 +23,13 @@ struct Account: Codable {
     let id: String
     let pin: String
     let accessLevel: AccessLevel
+    
+    enum AccessLevel: String, Codable {
+        case `default`, admin
+    }
 }
 
-enum AccessLevel: String, Codable {
-    case `default`, admin
-}
-
-extension AccessLevel: CustomStringConvertible {
+extension Account.AccessLevel: CustomStringConvertible {
     var description: String {
         switch self {
         case .admin:
